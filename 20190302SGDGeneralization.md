@@ -26,4 +26,5 @@ This paper studies the generalization of SGD with probabilistic guarantee using 
 3. The above theorem implies the generaization error bound with probabilistic guarantee: Pr(|x|> a) <= E|x|^2/ a^2.
 
 ## Gradient Dominat Nonconvex Optimization
-1.
+1.![Definition1](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.22.03.png)
+2.![Theorem3]()
