@@ -6,5 +6,5 @@ The autors employ the algorithm stability of SGD to develop generalization bound
 2. In the convex case, they show that the bound depends on the risk at the initilization point.
 
 ## Stability of SGD
-1. Notations
+1. ![Notation](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.25.28.png)
 
