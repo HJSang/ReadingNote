@@ -15,7 +15,7 @@
  1. True data distribution D and true sample realizations S
  2. Proposed data distribution D' and corresponding sample realizations S'
  3. The miss classification error on S is L_S(\hat f).
- 4. L_S - L_S' = L_S - L_D + L_D- L_D' + L_D' + L_S': Adapativity gap + Distribution Gap + Generalization Gap
+ 4. L_S - L_S' = (L_S - L_D) + (L_D- L_D') + (L_D' + L_S'): Adapativity gap + Distribution Gap + Generalization Gap
  5. By construction, the new test data set S' is independent of the existing classifier \hat f. 
  
  
