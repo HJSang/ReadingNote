@@ -13,3 +13,13 @@ This paper studies the generalization of SGD with probabilistic guarantee using 
 3. The generalization error is | f_S(w_S) - f(w_S)|, where f(w) = E_S{f_S(w)} expectation w.r.t sample S.
 4. For a learning algorithm A, its stability corresponds to how stable the output of the algorithm is with regard to the variants in the data set. The generalization error can be bounded by uniform stability bound.
 5. Two metrics are taken for measuring generalization error. One is the generalizaton in expectation w.r.t sample S and algorithm A. The second one is the generalization error with probabilistic guarantee, i.e., for any epsilon > 0, the quality P(|f_S(w_{T,S})- f(w_{T,S})| < \epsilon) converges to one as n goes to infinity. The generalization error in expectation implies the generalization in probability. 
+6. The related work: ![papers](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.00.01.png)
+
+## Priliminary
+1. **Asumption1**: loss function is continuously differentiable, nonnegative, \sigma-Lipschitz and uniformly bounded by M. The gradient is L-lipschitz and the gradient norm is uniformly bounded by \sigma.
+2. Let Assumption a hold. Apply SGD with the same sample path to solve ERM with data set S and S_bar. Then, the mean square error generalization error of SGD is <= 2M^2/n + 12M \sigma E(\delta_{T,S,S_bar}), where \delta_{T,S,S_bar} = || w_{T,S} - w_{T, S_bar}|| and the expectation is w.r.t. S, S_bar and sample path.
+3. Hence, the key issue is to quantify E(\delta_{T,S,S_bar}).
+
+## Nonconvex Optimization
+1. **Assumption2**: The variance of SGD is bounded by nu_S^2.
+2. **Theorem1**
