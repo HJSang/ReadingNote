@@ -17,5 +17,17 @@
  3. The miss classification error on S is L_S(\hat f).
  4. L_S - L_S' = (L_S - L_D) + (L_D- L_D') + (L_D' + L_S'): Adapativity gap + Distribution Gap + Generalization Gap
  5. By construction, the new test data set S' is independent of the existing classifier \hat f. 
+ 6. Note that, this decomposition is used to stdy the accuracy drop. If we are interested in generalization only, that is L_s' only.
+ 
+ 
+ ## Comments
+ 1. What factors can affect model generilization?
+ 2. Model complexity: # of parameters
+ 3. Regularization 
+ 4. Dropout
+ 5. Optimization algorithm: SGD VS Adam
+ 6. Cross-validation
+ 7. Hyperparameters tunning
+ 8. Simpler, generalize better?
  
  
