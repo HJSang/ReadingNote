@@ -22,4 +22,8 @@ This paper studies the generalization of SGD with probabilistic guarantee using 
 
 ## Nonconvex Optimization
 1. **Assumption2**: The variance of SGD is bounded by nu_S^2.
-2. **Theorem1** ![Theorem](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.14.43.png)
+2. ![Theorem](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.14.43.png)
+3. The above theorem implies the generaization error bound with probabilistic guarantee: Pr(|x|> a) <= E|x|^2/ a^2.
+
+## Gradient Dominat Nonconvex Optimization
+1.
