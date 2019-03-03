@@ -12,8 +12,12 @@ The autors employ the algorithm stability of SGD to develop generalization bound
 
 ## Main Result
 ![Theorem](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.28.52.png)
+
 The assumptions are commonly used in most of context. 
 
 ![convex](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.29.02.png)
+
+We can see that the generalization error is bounded by initial risk and convergence. Somehow, the generalization error is dominated by the initial risk.
+
 ![Nonconvex](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.29.19.png)
 
