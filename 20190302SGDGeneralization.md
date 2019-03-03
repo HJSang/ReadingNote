@@ -27,4 +27,4 @@ This paper studies the generalization of SGD with probabilistic guarantee using 
 
 ## Gradient Dominat Nonconvex Optimization
 1.![Definition1](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.22.03.png)
-2.![Theorem3]()
+2.![Theorem3](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.22.13.png)
