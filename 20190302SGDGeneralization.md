@@ -28,3 +28,7 @@ This paper studies the generalization of SGD with probabilistic guarantee using 
 ## Gradient Dominat Nonconvex Optimization
 1.![Definition1](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.22.03.png)
 2.![Theorem3](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-02%20at%2019.22.13.png)
+## Comments:
+1. Stable implies generalization: more stable, better generalization. 
+2. What is the deifference between stable defined generalization error and performance metric on test data?
+3. What is the relationship between generalization and regularization?
