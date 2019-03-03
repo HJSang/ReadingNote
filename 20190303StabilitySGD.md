@@ -7,4 +7,5 @@ The autors employ the algorithm stability of SGD to develop generalization bound
 
 ## Stability of SGD
 1. ![Notation](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.25.28.png)
+2. ![Stability](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.28.01.png)
 
