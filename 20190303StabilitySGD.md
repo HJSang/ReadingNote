@@ -11,4 +11,5 @@ The autors employ the algorithm stability of SGD to develop generalization bound
 
 ## Main Result
 ![Theorem](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.28.52.png)
+![convex](https://github.com/HJSang/ReadingNote/blob/master/Screen%20Shot%202019-03-03%20at%2009.29.02.png)
 
