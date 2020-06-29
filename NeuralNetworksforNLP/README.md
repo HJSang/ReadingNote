@@ -32,4 +32,18 @@
   * Calculate features of the context
   * Based on the features, calculate probabilities
   * Optimize feature weights using gradient descent, etc.
-  * Example: Previous words: "giving a", predict the next word in {a, the, talk, gift, hat,...}. <img src="https://render.githubusercontent.com/render/math?math=b=(3.0,2.5,-0.2,0.1,1.2,\cdots)"> represents how likely they are? <img src="https://render.githubusercontent.com/render/math?math=w_{1,a}=(-6.0,-5.1,0.2,0.1,0.5,\cdots)">: how likely are they given the prev word is "a"? <img src="https://render.githubusercontent.com/render/math?math=w_{2,giving}=(-0.2,-0.3,1.0,2.0,-1.2,\cdots)">: How likely are they given 2nd prev word is "giving"? <img src="https://render.githubusercontent.com/render/math?math=s=(-3.2,-2.9,1.0,2.2,0.6,\cdots)">$: Total socre.
+  * Example: Previous words: "giving a", predict the next word in {a, the, talk, gift, hat,...}. <img src="https://render.githubusercontent.com/render/math?math=b=(3.0,2.5,-0.2,0.1,1.2,\cdots)"> represents how likely they are? <img src="https://render.githubusercontent.com/render/math?math=w_{1,a}=(-6.0,-5.1,0.2,0.1,0.5,\cdots)">: how likely are they given the prev word is "a"? <img src="https://render.githubusercontent.com/render/math?math=w_{2,giving}=(-0.2,-0.3,1.0,2.0,-1.2,\cdots)">: How likely are they given 2nd prev word is "giving"? <img src="https://render.githubusercontent.com/render/math?math=s=(-3.2,-2.9,1.0,2.2,0.6,\cdots)">: Total socre.
+  * Convert scores into probabilities by taking the exponent and normalizing (softmax).
+  * A computation Graph View ![image](../images/nlp_graph_view.png)
+* A Note: "Lookup":
+  * Lookup can be viewed as "grabbing" a single vector from a big matrix of word embeddings. Assume the embedding matrix A: vector size x num.words. Lookup(2) is to find the second column
+  * Similarly, can be viewed as multiplying a "one-hot" vector.
+  * Former tends to be faster.
+
+* Training a Model:
+  * Reminder: totrain, we calculate a "loss function": a measure of how bad our predictions are. and move the parameters to reduce the loss.
+  * The most common loss function for probabilistic models is "negative log likelihood". 
+
+* Parameter Update:
+  * Back proportion allows us to calculate the derivative of the loss with respect to the parameters: <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial l}{\partial \theta}">.
+  * Simple stochastic gradient descent optimizes parameters according to the following rule: <img src="https://render.githubusercontent.com/render/math?math=\theta <- \theta - \alpha \frac{\partial l}{\partial \theta}">.
