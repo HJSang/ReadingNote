@@ -32,4 +32,4 @@
   * Calculate features of the context
   * Based on the features, calculate probabilities
   * Optimize feature weights using gradient descent, etc.
-  * Example: Previous words: "![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+giving a)"
+  * Example: Previous words: "giving a", predict the next word in {a, the, talk, gift, hat,...}. $b=(3.0,2.5,-0.2,0.1,1.2,\cdots)^T$ represents how likely they are? $w_{1,a}=(-6.0,-5.1,0.2,0.1,0.5,\cdots)^T$: how likely are they given the prev word is "a"? $w_{2,giving}=(-0.2,-0.3,1.0,2.0,-1.2,\cdots)^T$: How likely are they given 2nd prev word is "giving"? $s=(-3.2,-2.9,1.0,2.2,0.6,\cdots)^T$: Total socre.
