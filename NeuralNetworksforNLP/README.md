@@ -46,4 +46,51 @@
 
 * Parameter Update:
   * Back proportion allows us to calculate the derivative of the loss with respect to the parameters: <img src="https://render.githubusercontent.com/render/math?math=\frac{\partial l}{\partial \theta}">.
-  * Simple stochastic gradient descent optimizes parameters according to the following rule: <img src="https://render.githubusercontent.com/render/math?math=\theta <- \theta - \alpha \frac{\partial l}{\partial \theta}">.
+  * Simple stochastic gradient descent optimizes parameters according to the following rule: <img src="https://render.githubusercontent.com/render/math?math=\theta \leftarrow \theta - \alpha \frac{\partial l}{\partial \theta}">.
+
+* Choosing a Vocabulary 
+  * Unkown words: Necessity for UNK words. We don't have all the words in the word in the training data. Larger vocabularies require more memory and computation time.
+  * Common ways: Freqeuncy threshold (usually UNK <=1)
+  * Rank threshold
+
+* Evaluation and Vocabulary
+  * Important: the vocabulary must be same over models you compare.
+  * Or more accurately, all models must be able to generate the test set. It is OK if they can generate more than the test set but not less
+  * Comparing a character-based model to a word-level model is fair bit not vice-versa.
+
+* Beyond Linear Models
+  * Linear models cannot learn feature combinations. We can remember combinations as features using Neural nets.
+  * The computing graph is ![image](../images/nlp_nlm.png)
+  * Where is Strength Shared?
+    * The input is the lookup vector from the word embedding. Word embeddings: Similar input words get similar vectors.
+    * Similar output words get similar rows in the softmax matrix
+    * Similar contexts get similar hidden states.
+    * We can share paramters between the input and output embeddings.
+
+* Training Tricks
+  * Shuffling the Training Data
+    * Stochastic gradient methods update the paramters a little bit at a time. 
+    * What if we have the sentence at the end of the training data 500 times?
+    * To train correctly, we should randomly shuffle the order at each time step.
+  * Optimization Options:
+    * SGD with Momentum
+    * Adagrad
+    * Adam
+    * Many Others: Adadelta, RMSProp
+  * Early Stopping, Learning rate Decay
+    * Neural Nets have tons of paramters: we want to prevent them fromover-fitting
+    * We can do this by monitering our performance on held-out developemnt data and stop training when it starts ti get worse.
+    * It als sometimes helps to reduce the learning rate and continue training
+  * Dropout
+    * Dropout: randomly zero-out nodes in the hidden layer with probability p at the training time only
+    * Because the number of nodes at training/test is different, scaling is necessary:
+      * Standard dropout: scale by p at test time
+      * Inverted dropout: scale by 1/(1-p) at the training time
+     
+* Efficiency Tricks: Mini-batching
+  * On modern hardware 10 operations of size 1 is much slower than 1 operation of size 10
+  * Minibatching combines together smaller operations into one big one.
+  * Minibacthing:![image](../images/nlp_minibatch.png)
+
+
+   
