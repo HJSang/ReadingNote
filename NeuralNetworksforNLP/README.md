@@ -93,4 +93,71 @@
   * Minibacthing:![image](../images/nlp_minibatch.png)
 
 
-   
+## Models of Words
+* [lecture2](http://www.phontron.com/class/nn4nlp2019/assets/slides/nn4nlp-03-wordemb.pdf)
+* Word Embeddings: A continuous vector representation of words
+* How to train word embeddings:
+  * Initialize randomly, train jointly with the task
+  * Pre-train on a supervised task and test on another 
+  * Pre-train on an unsupervised task 
+* Distributional VS. Distributed Representation:
+  * Distributional representations
+    * Words are similar if they appear in similar contexts. Distribution of words indicative of usage
+    * In contrast: non-distributional representations created from lexical resources such as WordNet.
+  * Distributed representations:
+    * Basically, something is representated by a vector of values, each representing activations
+    * In contrast, local representations, where represented by a discrete symbol (one-hot vector)
+
+* Count based Mtheods
+  * Create a word-context count matrix
+    * Count the number of co-occurrences of word/context, with rows as word, columns as context. 
+    * Maybe weght with pointwise mutual information
+    * Maybe reduce dimensions using SVD
+  * Measure their colseness using cosine similarity.
+
+* Prediction-based Methods
+  * Insead, try to predict the words within a neutral.
+  * Word embeddings are the byproduct 
+
+* CBOW:
+  * Predict word based on sum of surrounding embeddings: ![image](../images/nlp_cbow.png)
+
+*Skip-gram:
+  * Predict each word in the context given the word: ![image](../images/nlp_skip_ngram.png)
+
+* Count-based and Prediction-based Methods:
+  * Strong connection between count-based methods and prediction-based methods
+  * Skip-gram objective is equivalent to matrix factorizatin with PMI and discount for number of samples k
+
+* GloVe:
+  * A matrix factorization approach motivated by ratios of P(word | context) probabilities
+  * Nice derivation from start to final loss function that satisfies desiderata
+  * Context has a large effect!
+  * Small context window: more syntax-based embeddings
+  * Large context window: more semantics-based, topical embeddings
+  * Context based on syntax: more functional, with words with same inflection grouped.
+
+* Types of Evaluation:
+  * Intrinsic vs. Extrinsic
+    * Intrinsic: How good is it based on its features?
+    * Extrinsic: How useful is it downstream?
+  * Qualitative vs. Quantitative
+    * Qualitative: Examine the characteristics of examples
+    * Quantitative: calculate statistics
+
+* Visualization of Embeddings
+  * Reduce high-dimensional embeddings into 2/3D for visualization
+  * Non-linear projections group things that are close in high-dimensional space
+  * e.g. SNE/t-SNE
+
+* Limitations of Embeddings:
+  * Sensitive to superficial differences (dog/dogs)
+  * Insensitive to context (financial bank, bank of river)
+  * Not necessarily coordinated with knowledge or cross languages
+  * Not interpretatble
+  * Can encode bias ( encode stereotypical gender roles, racial biases)
+  
+* Sparse Embeddings:
+  * Each dimension ofa word embedding is not intepretable 
+  * Solution: add a sparsity constraint to increase the information content of non-zero dimensions for each word
+ 
