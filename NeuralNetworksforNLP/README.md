@@ -160,4 +160,11 @@
 * Sparse Embeddings:
   * Each dimension ofa word embedding is not intepretable 
   * Solution: add a sparsity constraint to increase the information content of non-zero dimensions for each word
- 
+
+
+## Convolutional Networks for Text
+* [lecture3](http://www.phontron.com/class/nn4nlp2019/assets/slides/nn4nlp-04-cnn.pdf)
+* Bag of Words (BOW): ![image](../images/nlp_bow.png)
+* Continuous Bag of Words (CBOW): ![image](../images/nlp_cbow_graph.png)
+* Deep CBOW: ![image](../images/nlp_deep_cbow.png)
+
