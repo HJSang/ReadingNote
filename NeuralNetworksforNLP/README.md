@@ -164,7 +164,26 @@
 
 ## Convolutional Networks for Text
 * [lecture3](http://www.phontron.com/class/nn4nlp2019/assets/slides/nn4nlp-04-cnn.pdf)
-* Bag of Words (BOW): ![image](../images/nlp_bow.png)
-* Continuous Bag of Words (CBOW): ![image](../images/nlp_cbow_graph.png)
-* Deep CBOW: ![image](../images/nlp_deep_cbow.png)
+* Bag of Words (BOW): use the context (bags of words) to predict next word. Loop up each word in the context and sume them up + bias.Note that, no weight matrix is used. ![image](../images/nlp_bow.png)
+We should note that the order of the words do not play a role in BOW.
+* Continuous Bag of Words (CBOW): Start from BOW and add weight matrix. The inituition is that the words play differet importances in predicting next word. CBOW uses the order information from the weight matrix.
+ ![image](../images/nlp_cbow_graph.png)
+* Deep CBOW: Deeper than CBOW. Use activation function ``tanh`` to refine the information and repeat multiple times. The advantage is that this complciated network can catch complicated combinations of information (words).
+![image](../images/nlp_deep_cbow.png)
+
+* What do our vectors represent?
+  * feature combinations
+  * capature things such as "not" and "hate"
+  * BUT! Cannot handle "not hate"
+
+* Bag of n-grams:
+  * Allow us to capture combination features in a simple way "don't love", "not the best"
+  * Works pretty well
+  * ![image](../images/nlp_bag_n_gram.png)
+  
+* What problems with Bag of n-grams?
+  * Same as before: paramter explosion
+  * No sharing between similar words/n-grams
+
+* 1-d convolutions/time-delay networks: ![image](../images/nlp_1d_cnn.png)
 
