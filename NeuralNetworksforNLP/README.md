@@ -166,10 +166,10 @@
 * [lecture3](http://www.phontron.com/class/nn4nlp2019/assets/slides/nn4nlp-04-cnn.pdf)
 * Bag of Words (BOW): use the context (bags of words) to predict next word. Loop up each word in the context and sume them up + bias.Note that, no weight matrix is used. ![image](../images/nlp_bow.png)
 We should note that the order of the words do not play a role in BOW.
-* Continuous Bag of Words (CBOW): Start from BOW and add weight matrix. The inituition is that the words play differet importances in predicting next word. CBOW uses the order information from the weight matrix.
- ![image](../images/nlp_cbow_graph.png)
+* Continuous Bag of Words (CBOW): Start from BOW and add weight matrix. ![image](../images/nlp_cbow_graph.png)
 * Deep CBOW: Deeper than CBOW. Use activation function ``tanh`` to refine the information and repeat multiple times. The advantage is that this complciated network can catch complicated combinations of information (words).
 ![image](../images/nlp_deep_cbow.png)
+* Note that, the word order information is not used in CBOW, which is important.
 
 * What do our vectors represent?
   * feature combinations
@@ -186,4 +186,53 @@ We should note that the order of the words do not play a role in BOW.
   * No sharing between similar words/n-grams
 
 * 1-d convolutions/time-delay networks: ![image](../images/nlp_1d_cnn.png)
+  * Sharing the weight matrix and bias across layers and words
+  * For 1-d cnn, we use the neighbor words. Concate two vectors together.
+  * Like 2-grams 
+  * ``tanh(W * [x_i, x_{i+1}] + b)``
+  * How to combine outputs from layer1? Pool?
+  * Softmax the final output to probability vector, which is # of words in vocabulary.
+
+* CNN for Text
+  * Generally based on 1D convolutions
+    * But often uses terminology/functions borrowed from image processing for historical reasons
+  * Two main paradigms:
+    * Context window modeling: For tagging, etc., get the surrounding context before tagging
+    * Sentence modeling: Do convolution to extract n-grams, pooling to combine over the whole sentence.
+
+## Architecture of CNN
+*[lecture from cs231n](https://cs231n.github.io/convolutional-networks/)
+* ConvNet architectures: **Convolutional Layer**, **Pooling Layer**, and **Fully-Connected** Layer (exactly as seen in regular Neural Networks). We will stack these layers to form a full ConvNet architecture.
+* Convolutional Layer:
+  * First, the depth of the output volume is a hyperparameter: it corresponds to the number of filters we would like to use, each learning to look for something different in the input. 
+  * Second, we must specify the stride with which we slide the filter. When the stride is 1 then we move the filters one pixel at a time. When the stride is 2 (or uncommonly 3 or more, though this is rare in practice) then the filters jump 2 pixels at a time as we slide them around. This will produce smaller output volumes spatially.
+  * As we will soon see, sometimes it will be convenient to pad the input volume with zeros around the border. The size of this zero-padding is a hyperparameter. The nice feature of zero padding is that it will allow us to control the spatial size of the output volumes (most commonly as we’ll see soon we will use it to exactly preserve the spatial size of the input volume so the input and output width and height are the same).
+  * We can compute the spatial size of the output volume as a function of the input volume size ``W``. the receptive field size of the Conv Layer neurons ``F``. The stride with which they are applied ``S`` and and the amount of zero padding used ``P`` on the border. You can convince yourself that the correct formula for calculating how many neurons “fit” is given by ``(W-F+2P)/S +1``. For example for a 7x7 input and a 3x3 filter with stride 1 and pad 0 we would get a 5x5 output. With stride 2 we would get a 3x3 output.
+  * Constraints on strides: Note again that the spatial arrangement hyperparameters have mutual constraints. For example, when the input has size W=10, no zero-padding is used P=0, and the filter size is F=3, then it would be impossible to use stride S=2, since (W−F+2P)/S+1=(10−3+0)/2+1=4.5, i.e. not an integer, indicating that the neurons don’t “fit” neatly and symmetrically across the input. Therefore, this setting of the hyperparameters is considered to be invalid, and a ConvNet library could throw an exception or zero pad the rest to make it fit, or crop the input to make it fit, or something. As we will see in the ConvNet architectures section, sizing the ConvNets appropriately so that all the dimensions “work out” can be a real headache, which the use of zero-padding and some design guidelines will significantly alleviate.
+  * Parameter Sharing. Parameter sharing scheme is used in Convolutional Layers to control the number of parameter
+  * Summary. To summarize, the Conv Layer:
+    * Accepts a volume of size ``W1×H1×D1``
+    * Requires four hyperparameters:
+      * Number of filters ``K``
+      * their spatial extent ``F``
+      * the stride ``S``
+      * the amount of zero padding ``P``.
+    * Produces a volume of size ``W2×H2×D2`` where:
+      * ``D2=K``
+      * ``W2=(W1−F+2P)/S+1``
+      * ``H2=(H1−F+2P)/S+1`` (i.e. width and height are computed equally by symmetry)
+    * With parameter sharing, it introduces ``F⋅F⋅D1`` weights per filter, for a total of ``(F⋅F⋅D1)⋅K`` weights and ``K`` biases.
+    * In the output volume, the d-th depth slice (of size W2×H2) is the result of performing a valid convolution of the d-th filter over the input volume with a stride of S, and then offset by d-th bias.
+  * Pooling Layer:
+    * The Pooling Layer operates independently on every depth slice of the input and resizes it spatially, using the MAX operation. The most common form is a pooling layer with filters of size 2x2 applied with a stride of 2 downsamples every depth slice in the input by 2 along both width and height, discarding 75% of the activations. Every MAX operation would in this case be taking a max over 4 numbers (little 2x2 region in some depth slice)
+    * More generally, the pooling layer:
+      * Accepts a volume of size ``W1×H1×D1``
+      * Requires two hyperparameters: their spatial extent ``F`` and the stride ``S``.
+      * Produces a volume of size ``W2×H2×D2`` where:
+        * ``W2=(W1−F)/S+1``
+        * ``H2=(H1−F)/S+1``
+        * ``D2=D1``
+      * Introduces zero parameters since it computes a fixed function of the input
+      * For Pooling layers, it is not common to pad the input using zero-padding.
+    * Example: ![image](https://cs231n.github.io/assets/cnn/maxpool.jpeg) 
 
