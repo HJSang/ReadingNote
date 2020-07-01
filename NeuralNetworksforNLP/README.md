@@ -254,6 +254,11 @@ We should note that the order of the words do not play a role in BOW.
 | Model size not increasing with size of input          | Difficulty of accessing information from a long time ago|
 | Computation takes into account historical information | Cannot consider any future input for the current state  |
 | Weights are shared across time                        |                                                         |
+  * Loss function In the case of a recurrent neural network, the loss function ``L`` of all time steps is defined based on the loss at every time step as follows: ![image](../images/rnn_loss.png)
+  * Backpropagation is done at each point in time: ![image](../images/rnn_gradient.png)
+  * Vanishing/exploding gradientThe vanishing and exploding gradient phenomena are often encountered in the context of RNNs. The reason why they happen is that it is difficult to capture long term dependencies because of multiplicative gradient that can be exponentially decreasing/increasing with respect to the number of layers.
+  * Gradient clippingIt is a technique used to cope with the exploding gradient problem sometimes encountered when performing backpropagation. By capping the maximum value for the gradient, this phenomenon is controlled in practice.
+
 
 
 
