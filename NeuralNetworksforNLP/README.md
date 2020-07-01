@@ -248,15 +248,15 @@ We should note that the order of the words do not play a role in BOW.
     - Architecture of a traditional RNNRecurrent neural networks, also known as RNNs, are a class of neural networks that allow previous outputs to be used as inputs while having hidden states. ![image](https://stanford.edu/~shervine/teaching/cs-230/illustrations/architecture-rnn-ltr.png), where ``x`` is input, ``y`` is output, ``a`` is activation and ``t`` is timestep. The transition state from t-1 to t using the computing graph is shown as ![image](https://stanford.edu/~shervine/teaching/cs-230/illustrations/description-block-rnn-ltr.png)
     - Note that the later activation is derived from the previous activation and current input. The output is derived from the activation directly. Please also note that, the parameters ``W_{aa}, W_{a,x}, b_a, W_{ya}, b_y`` are shared across ``t``.
         
-        |         Advantages                                    |               Drawbacks                                 |
-	| ----------------------------------------------------- | --------------------------------------------------------|
-	| Possibility of processing input of any length         | Computation being slow                                  |
-	| Model size not increasing with size of input          | Difficulty of accessing information from a long time ago|
-        | Computation takes into account historical information | Cannot consider any future input for the current state  |
-        | Weights are shared across time                        |                                                         |
+|         Advantages                                    |               Drawbacks                                 |
+| ----------------------------------------------------- | --------------------------------------------------------|
+| Possibility of processing input of any length         | Computation being slow                                  |
+| Model size not increasing with size of input          | Difficulty of accessing information from a long time ago|
+| Computation takes into account historical information | Cannot consider any future input for the current state  |
+| Weights are shared across time                        |                                                         |
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+
+
+
+
+
