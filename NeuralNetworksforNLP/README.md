@@ -260,6 +260,12 @@ We should note that the order of the words do not play a role in BOW.
   * Gradient clippingIt is a technique used to cope with the exploding gradient problem sometimes encountered when performing backpropagation. By capping the maximum value for the gradient, this phenomenon is controlled in practice.
 
 
+## Understanding LSTM Networks
+* [Blog site](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
+  * The first step in our LSTM is to decide what information we’re going to throw away from the cell state. This decision is made by a sigmoid layer called the “forget gate layer.” It looks at ``h_{t−1}`` and ``x_t``, and outputs a number between 0 and 1 for each number in the cell state ``C_{t−1}``. A 1 represents “completely keep this” while a 0 represents “completely get rid of this.” ![image](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-f.png)
+  * The next step is to decide what new information we’re going to store in the cell state. This has two parts. First, a sigmoid layer called the “input gate layer” decides which values we’ll update. Next, a tanh layer creates a vector of new candidate values, ``\tilde{C}_t``, that could be added to the state. ![image](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-i.png)
+  * We multiply the old state by ``f_t``, forgetting the things we decided to forget earlier. Then we add ``i_t*\tilde{C}_t``. This is the new candidate values, scaled by how much we decided to update each state value. ![image](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-C.png)
+  * Finally, we need to decide what we’re going to output. This output will be based on our cell state, but will be a filtered version. First, we run a sigmoid layer which decides what parts of the cell state we’re going to output. Then, we put the cell state through tanh (to push the values to be between −1 and 1) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to. ![image](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-focus-o.png)
 
 
 
