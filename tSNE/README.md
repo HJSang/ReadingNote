@@ -36,4 +36,4 @@
 
 The algorithm of t-SNE is ![image](../images/tsne_algorithm.png)
 
-
+[The implementation in sklearn](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/manifold/_t_sne.py#L476).
