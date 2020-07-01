@@ -236,3 +236,14 @@ We should note that the order of the words do not play a role in BOW.
       * For Pooling layers, it is not common to pad the input using zero-padding.
     * Example: ![image](https://cs231n.github.io/assets/cnn/maxpool.jpeg) 
 
+## Recurrent Neural Netwroks
+* [lecture](http://www.phontron.com/class/nn4nlp2019/assets/slides/nn4nlp-05-rnn.pdf)
+* NLP and Sequential Data: NLP is full of sequential data
+  * Words in sentences
+  * Characters in words
+  * sentences in discourse
+* Long-distance dependencies in Language
+* [Recurrent Neural networks cheetsheet](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks)
+  * Overview:
+    - Architecture of a traditional RNNRecurrent neural networks, also known as RNNs, are a class of neural networks that allow previous outputs to be used as inputs while having hidden states. ![image](https://stanford.edu/~shervine/teaching/cs-230/illustrations/architecture-rnn-ltr.png), where ``x`` is input, ``y`` is output, ``a`` is activation and ``t`` is timestep.
+
