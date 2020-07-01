@@ -255,4 +255,8 @@ We should note that the order of the words do not play a role in BOW.
         | Computation takes into account historical information | Cannot consider any future input for the current state  |
         | Weights are shared across time                        |                                                         |
 
-
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
